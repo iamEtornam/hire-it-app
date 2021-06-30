@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Hire IT',
       debugShowCheckedModeBanner: false,
       theme: customLightTheme(context),
-      darkTheme: customDarkTheme(context),
+      // darkTheme: customDarkTheme(context),
       home: DashboardView(),
     );
   }
