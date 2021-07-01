@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'custom_colors.dart';
 
-
 /// light theme
 ThemeData customLightTheme(
   BuildContext context,
@@ -12,28 +11,28 @@ ThemeData customLightTheme(
   return ThemeData(
       scaffoldBackgroundColor: Color.fromARGB(255, 240, 242, 245),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      textSelectionTheme: TextSelectionThemeData(cursorColor: CustomColors.customBlueColor),
+      textSelectionTheme:
+          TextSelectionThemeData(cursorColor: CustomColors.customBlueColor),
       errorColor: CustomColors.fromHex('#B00020'),
       platform: defaultTargetPlatform,
       highlightColor: CustomColors.customBlueColor.withOpacity(.5),
       primaryColor: CustomColors.customBlueColor,
       indicatorColor: CustomColors.customBlueColor,
-      floatingActionButtonTheme:
-          FloatingActionButtonThemeData(backgroundColor: CustomColors.customBlueColor),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: CustomColors.customBlueColor),
       unselectedWidgetColor: Colors.grey,
       brightness: Brightness.light,
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Color.fromRGBO(250, 250, 250, 1),
       accentColor: CustomColors.customBlueColor,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        unselectedItemColor: Colors.grey
-      ),
+      bottomNavigationBarTheme:
+          BottomNavigationBarThemeData(unselectedItemColor: Colors.grey),
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Colors.transparent,
         filled: true,
         alignLabelWithHint: true,
         hintStyle: Theme.of(context).textTheme.bodyText1,
-        contentPadding: EdgeInsets.symmetric(vertical: 6,horizontal: 15),
+        contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey[400]!, width: 1),
@@ -45,7 +44,8 @@ ThemeData customLightTheme(
             borderSide: BorderSide(color: CustomColors.fromHex('#E5E5E5')),
             borderRadius: BorderRadius.all(Radius.circular(45))),
         errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: CustomColors.fromHex('#B00020').withOpacity(.1)),
+            borderSide: BorderSide(
+                color: CustomColors.fromHex('#B00020').withOpacity(.1)),
             borderRadius: BorderRadius.all(Radius.circular(45))),
         focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: CustomColors.fromHex('#B00020')),
@@ -55,10 +55,8 @@ ThemeData customLightTheme(
             .textTheme
             .bodyText2!
             .copyWith(color: CustomColors.fromHex('#B00020')),
-            focusColor: Colors.grey[400]!,
-
+        focusColor: Colors.grey[400]!,
       ),
-
       tabBarTheme: TabBarTheme(
         unselectedLabelColor: Colors.black.withOpacity(.5),
       ),
@@ -111,13 +109,14 @@ ThemeData customDarkTheme(
   return ThemeData(
       scaffoldBackgroundColor: CustomColors.fromHex('#121212'),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-       textSelectionTheme: TextSelectionThemeData(cursorColor: CustomColors.customBlueColor),
+      textSelectionTheme:
+          TextSelectionThemeData(cursorColor: CustomColors.customBlueColor),
       errorColor: CustomColors.fromHex('#CF6679'),
       primaryColor: CustomColors.customBlueColor,
       indicatorColor: CustomColors.customBlueColor,
       highlightColor: CustomColors.customBlueColor.withOpacity(.5),
-      floatingActionButtonTheme:
-          FloatingActionButtonThemeData(backgroundColor: CustomColors.customBlueColor),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: CustomColors.customBlueColor),
       platform: defaultTargetPlatform,
       unselectedWidgetColor: Colors.grey,
       accentColor: CustomColors.customBlueColor,
@@ -166,7 +165,8 @@ ThemeData customDarkTheme(
             borderSide: BorderSide(color: CustomColors.fromHex('#E5E5E5')),
             borderRadius: BorderRadius.all(Radius.circular(45))),
         errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: CustomColors.fromHex('#CF6679').withOpacity(1)),
+            borderSide: BorderSide(
+                color: CustomColors.fromHex('#CF6679').withOpacity(1)),
             borderRadius: BorderRadius.all(Radius.circular(45))),
         focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: CustomColors.fromHex('#CF6679')),
