@@ -1,16 +1,25 @@
+import 'dart:io';
+
 import 'package:floating_navbar/floating_navbar.dart';
 import 'package:floating_navbar/floating_navbar_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:hire_it/custom_colors.dart';
 import 'package:hire_it/custom_logo.dart';
 import 'package:hire_it/data_source.dart';
+import 'package:window_size/window_size.dart';
 
 import 'custom_theme.dart';
 import 'job_model.dart';
 import 'resources/resources.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowMinSize(const Size(747, 986));
+    setWindowMaxSize(Size.infinite);
+  }
   runApp(MyApp());
 }
 
@@ -68,112 +77,164 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 24),
       decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: CustomColors.bgColors,
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.transparent,
-          title: Row(
-            children: [
-              CustomLogo(
-                size: 20,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'HIREIT',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontWeight: FontWeight.w900),
-              ),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            title: Row(
+              children: [
+                CustomLogo(
+                  size: 20,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'HIREIT',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontWeight: FontWeight.w900),
+                ),
+              ],
+            ),
+            centerTitle: false,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundImage: AssetImage(Images.avatar),
+                ),
+              )
             ],
           ),
-          centerTitle: false,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15.0),
-              child: CircleAvatar(
-                radius: 25,
-                backgroundImage: AssetImage(Images.avatar),
-              ),
-            )
-          ],
-        ),
-        body: ListView(
-          controller: _scrollController,
-          padding: EdgeInsets.all(24),
-          children: [
-            TextFormField(
-              style: Theme.of(context).textTheme.bodyText1,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.text,
-              textCapitalization: TextCapitalization.sentences,
-              maxLines: 1,
-              enableInteractiveSelection: true,
-              decoration: InputDecoration(
-                  alignLabelWithHint: true,
-                  hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
-                  contentPadding: EdgeInsets.all(15.0),
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  focusedBorder:
-                      Theme.of(context).inputDecorationTheme.focusedBorder,
-                  enabledBorder:
-                      Theme.of(context).inputDecorationTheme.enabledBorder,
-                  disabledBorder:
-                      Theme.of(context).inputDecorationTheme.disabledBorder,
-                  errorBorder:
-                      Theme.of(context).inputDecorationTheme.errorBorder,
-                  focusedErrorBorder:
-                      Theme.of(context).inputDecorationTheme.focusedErrorBorder,
-                  fillColor: Theme.of(context).inputDecorationTheme.fillColor,
-                  filled: true,
-                  labelText: 'Find your dream job',
-                  labelStyle: Theme.of(context)
-                      .inputDecorationTheme
-                      .labelStyle!
-                      .copyWith(color: Colors.grey[500], fontSize: 18),
-                  errorStyle: Theme.of(context).inputDecorationTheme.errorStyle,
-                  prefixIcon: Icon(CupertinoIcons.search)),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Text(
-              'Discover Job',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            FutureBuilder<List<Job>>(
-                future: Future.value(DataSource.data),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting &&
-                      snapshot.data == null) {
-                    return CircularProgressIndicator.adaptive();
-                  }
-                  return ListView.separated(
-                    controller: _scrollController,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => JobCardWidget(
-                      job: snapshot.data![index],
-                    ),
-                    separatorBuilder: (__, _) => SizedBox(
-                      height: 5,
-                    ),
-                    itemCount: snapshot.data!.length,
-                  );
-                })
-          ],
+          body: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+            return ListView(
+              controller: _scrollController,
+              padding: EdgeInsets.all(24),
+              children: [
+                TextFormField(
+                  style: Theme.of(context).textTheme.bodyText1,
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.text,
+                  textCapitalization: TextCapitalization.sentences,
+                  maxLines: 1,
+                  enableInteractiveSelection: true,
+                  decoration: InputDecoration(
+                      alignLabelWithHint: true,
+                      hintStyle:
+                          Theme.of(context).inputDecorationTheme.hintStyle,
+                      contentPadding: EdgeInsets.all(15.0),
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      focusedBorder:
+                          Theme.of(context).inputDecorationTheme.focusedBorder,
+                      enabledBorder:
+                          Theme.of(context).inputDecorationTheme.enabledBorder,
+                      disabledBorder:
+                          Theme.of(context).inputDecorationTheme.disabledBorder,
+                      errorBorder:
+                          Theme.of(context).inputDecorationTheme.errorBorder,
+                      focusedErrorBorder: Theme.of(context)
+                          .inputDecorationTheme
+                          .focusedErrorBorder,
+                      fillColor:
+                          Theme.of(context).inputDecorationTheme.fillColor,
+                      filled: true,
+                      labelText: 'Find your dream job',
+                      labelStyle: Theme.of(context)
+                          .inputDecorationTheme
+                          .labelStyle!
+                          .copyWith(color: Colors.grey[500], fontSize: 18),
+                      errorStyle:
+                          Theme.of(context).inputDecorationTheme.errorStyle,
+                      prefixIcon: Icon(CupertinoIcons.search)),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'Discover Job',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                FutureBuilder<List<Job>>(
+                    future: Future.value(DataSource.data),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting &&
+                          snapshot.data == null) {
+                        return CircularProgressIndicator.adaptive();
+                      }
+
+                      if (constraints.maxWidth >= 600) {
+                        return AnimationLimiter(
+                          child: GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                childAspectRatio: 3 / 2.1,
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 20,
+                                mainAxisSpacing: 20,
+                              ),
+                              controller: _scrollController,
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                return AnimationConfiguration.staggeredGrid(
+                                  position: index,
+                                  duration: const Duration(milliseconds: 375),
+                                  columnCount: 3,
+                                  child: ScaleAnimation(
+                                    child: FadeInAnimation(
+                                      child: JobCardWidget(
+                                        job: snapshot.data![index],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        );
+                      }
+                      return AnimationLimiter(
+                        child: ListView.separated(
+                          controller: _scrollController,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) =>
+                              AnimationConfiguration.staggeredList(
+                            position: index,
+                            duration: const Duration(milliseconds: 375),
+                            child: SlideAnimation(
+                              verticalOffset: 50.0,
+                              child: FadeInAnimation(
+                                child: JobCardWidget(
+                                  job: snapshot.data![index],
+                                ),
+                              ),
+                            ),
+                          ),
+                          separatorBuilder: (__, _) => SizedBox(
+                            height: 5,
+                          ),
+                          itemCount: snapshot.data!.length,
+                        ),
+                      );
+                    })
+              ],
+            );
+          }),
         ),
       ),
     );
@@ -294,6 +355,7 @@ class JobDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 24),
       decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: CustomColors.bgColors,
@@ -312,7 +374,7 @@ class JobDetailView extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-                  child: ListView(
+          child: ListView(
             padding: EdgeInsets.all(16),
             children: [
               Center(
@@ -433,13 +495,13 @@ class JobDetailView extends StatelessWidget {
                 height: 25,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Row(
                   children: [
                     Expanded(
-                                      child: TextButton(
+                      child: TextButton(
                           style: TextButton.styleFrom(
-                               elevation: 1,
+                              elevation: 1,
                               backgroundColor: CustomColors.customBlueColor,
                               shape: StadiumBorder(),
                               padding: EdgeInsets.fromLTRB(24, 15, 24, 15)),
@@ -452,7 +514,9 @@ class JobDetailView extends StatelessWidget {
                                 .copyWith(color: Colors.white),
                           )),
                     ),
-                    SizedBox(width: 16,),
+                    SizedBox(
+                      width: 16,
+                    ),
                     TextButton(
                         style: TextButton.styleFrom(
                             elevation: .5,
