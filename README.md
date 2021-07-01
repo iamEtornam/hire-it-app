@@ -24,6 +24,7 @@ This project is an implementation of a Design i found on [uplabs.com](https://ww
     <td><img src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_2.png?raw=true" width="200" height="400"/></td> 
 </tr>
 <hr>
+<div>
 <p>MacOS app</p>
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_3.png?raw=true" width="500" height="400"/></td>
@@ -31,6 +32,7 @@ This project is an implementation of a Design i found on [uplabs.com](https://ww
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_4.png?raw=true" width="500" height="400"/></td>
 </tr>
+</div>
 <hr>
 ## Getting Started
 
