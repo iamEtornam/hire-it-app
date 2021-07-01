@@ -17,13 +17,13 @@ This project is an implementation of a Design i found on [uplabs.com](https://ww
 ## Art
 
 <img src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/attachment.png?raw=true" width="100%"  height="50%"/>
-<br>
+<br/>
    
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_1.png?raw=true" width="200" height="400"/></td>
     <td><img src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_2.png?raw=true" width="200" height="400"/></td> 
 </tr>
-<br>
+<br/>
 <p>MacOS app</p>
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_3.png?raw=true" width="500" height="400"/></td>
