@@ -27,10 +27,10 @@ This project is an implementation of a Design i found on [uplabs.com](https://ww
 <div>
 <p>MacOS app</p>
 <tr>
-    <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_3.png?raw=true" width="500" height="400"/></td>
+    <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_3.png?raw=true" height="400"/></td>
 </tr>
 <tr>
-    <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_4.png?raw=true" width="500" height="400"/></td>
+    <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_4.png?raw=true" height="400"/></td>
 </tr>
 </div>
 <hr>
