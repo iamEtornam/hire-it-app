@@ -24,13 +24,14 @@ This project is an implementation of a Design i found on [uplabs.com](https://ww
     <td><img src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_2.png?raw=true" width="200" height="400"/></td> 
 </tr>
 <br>
+<p>MacOS app</p>
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_3.png?raw=true" width="500" height="400"/></td>
 </tr>
 <tr>
     <td><img align="left" src="https://github.com/RegNex/hire-it-app/blob/main/screenshots/screenshot_4.png?raw=true" width="500" height="400"/></td>
 </tr>
-
+<br>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
