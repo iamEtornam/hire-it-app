@@ -17,7 +17,7 @@ import 'resources/resources.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(747, 986));
+    setWindowMinSize(const Size(1293, 700));
     setWindowMaxSize(Size.infinite);
   }
   runApp(MyApp());
@@ -41,6 +41,7 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: FloatingNavBar(
         color: CustomColors.customBlueColor,
