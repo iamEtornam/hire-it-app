@@ -8,7 +8,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:hire_it/custom_colors.dart';
 import 'package:hire_it/custom_logo.dart';
 import 'package:hire_it/data_source.dart';
-import 'package:window_size/window_size.dart';
+// import 'package:window_size/window_size.dart';
 
 import 'custom_theme.dart';
 import 'job_model.dart';
@@ -16,10 +16,10 @@ import 'resources/resources.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(1293, 700));
-    setWindowMaxSize(Size.infinite);
-  }
+  // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    // setWindowMinSize(const Size(1293, 700));
+    // setWindowMaxSize(Size.infinite);
+  // }
   runApp(MyApp());
 }
 
@@ -265,21 +265,23 @@ class JobCardWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(job.positionAd,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontWeight: FontWeight.bold)),
-                  Image.asset(
-                    job.comapnyLogo,
-                    width: 60,
-                    height: 60,
-                  )
-                ],
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(job.positionAd,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(fontWeight: FontWeight.bold)),
+                    Image.asset(
+                      job.comapnyLogo,
+                      width: 60,
+                      height: 60,
+                    )
+                  ],
+                ),
               ),
               CardHelperWidget(
                   icon: CupertinoIcons.money_dollar_circle,
@@ -292,29 +294,31 @@ class JobCardWidget extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CardHelperWidget(
-                      icon: CupertinoIcons.briefcase,
-                      data: job.yearsOfExperienceRange),
-                  Material(
-                      elevation: 0,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 6, horizontal: 15),
-                        child: Text(
-                          job.jobType,
-                          style: Theme.of(context).textTheme.button,
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CardHelperWidget(
+                        icon: CupertinoIcons.briefcase,
+                        data: job.yearsOfExperienceRange),
+                    Material(
+                        elevation: 0,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                          child: Text(
+                            job.jobType,
+                            style: Theme.of(context).textTheme.button,
+                          ),
                         ),
-                      ),
-                      color: job.id.isEven
-                          ? CustomColors.customOrangeColor
-                          : CustomColors.customLightBlueColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(45)))
-                ],
+                        color: job.id.isEven
+                            ? CustomColors.customOrangeColor
+                            : CustomColors.customLightBlueColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(45)))
+                  ],
+                ),
               ),
             ],
           ),
